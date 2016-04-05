@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redis Doc</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div>
+        <h1>
+            Redis cli Documentation
+        </h1>
+    </div>
+    <div class="title">
+        <div class="row">
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active"><a href="#">Key</a></li>
+                <li role="presentation"><a href="#">String</a></li>
+                <li role="presentation"><a href="#">Hash</a></li>
+                <li role="presentation"><a href="#">List</a></li>
+                <li role="presentation"><a href="#">Set</a></li>
+                <li role="presentation"><a href="#">SortedSet</a></li>
+                <li role="presentation"><a href="#">HyperLogLog</a></li>
+                <li role="presentation"><a href="#">GEO</a></li>
+                <li role="presentation"><a href="#">Server</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+
+
+        <div class="col-md-3">
+
+            <ul class="list-group">
+                <li class="list-group-item">DEL</li>
+                <li class="list-group-item">DUMP</li>
+                <li class="list-group-item"> EXISTS</li>
+                <li class="list-group-item"> EXPIRE</li>
+                <li class="list-group-item"> EXPIREAT</li>
+                <li class="list-group-item"> KEYS</li>
+                <li class="list-group-item"> MIGRATE</li>
+                <li class="list-group-item"> MOVE</li>
+                <li class="list-group-item"> OBJECT</li>
+                <li class="list-group-item"> PERSIST</li>
+                <li class="list-group-item"> PEXPIRE</li>
+                <li class="list-group-item"> PEXPIREAT</li>
+                <li class="list-group-item"> PTTL</li>
+                <li class="list-group-item"> RANDOMKEY</li>
+                <li class="list-group-item"> RENAME</li>
+                <li class="list-group-item"> RENAMENX</li>
+                <li class="list-group-item"> RESTORE</li>
+                <li class="list-group-item"> SORT</li>
+                <li class="list-group-item"> TTL</li>
+                <li class="list-group-item"> TYPE</li>
+                <li class="list-group-item"> SCAN</li>
+
+            </ul>
+        </div>
+        <div class="col-md-9">
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    说明
+                </div>
+                <div class="panel-footer">
+                    <div>DEL</div>
+
+                    <div>DEL key [key ...]</div>
+
+                    <div>删除给定的一个或多个 key 。</div>
+
+                    <div>不存在的 key 会被忽略。</div>
+
+                    <div>可用版本：</div>
+                    <div>>= 1.0.0</div>
+                    <div>时间复杂度：</div>
+                    <div>O(N)， N 为被删除的 key 的数量。</div>
+                    <div>删除单个字符串类型的 key ，时间复杂度为O(1)。</div>
+                    <div>删除单个列表、集合、有序集合或哈希表类型的 key ，时间复杂度为O(M)， M 为以上数据结构内的元素数量。</div>
+                    <div>返回值：</div>
+                    <div>被删除 key 的数量。</div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    示例
+                </div>
+                <div class="panel-footer">
+                    <div># 删除单个 key</div>
+
+                    <div>redis> SET name huangz</div>
+                    <div>OK</div>
+
+                    <div>redis> DEL name</div>
+                    <div>(integer) 1</div>
+
+
+                    <div># 删除一个不存在的 key</div>
+
+                    <div>redis> EXISTS phone</div>
+                    <div>(integer) 0</div>
+
+                    <div>redis> DEL phone # 失败，没有 key 被删除</div>
+                    <div>(integer) 0</div>
+
+
+                    <div># 同时删除多个 key</div>
+
+                    <div>redis> SET name "redis"</div>
+                    <div>OK</div>
+
+                    <div>redis> SET type "key-value store"</div>
+                    <div>OK</div>
+
+                    <div>redis> SET website "redis.com"</div>
+                    <div>OK</div>
+
+                    <div>redis> DEL name type website</div>
+                    <div>(integer) 3</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
