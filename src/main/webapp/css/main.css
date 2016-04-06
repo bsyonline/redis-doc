@@ -1,4 +1,50 @@
-.title{
+.header{
     margin-top:20px;
     margin-bottom: 20px;
+}
+.current{
+    background-color: cornflowerblue;
+    color:white;
+    font-weight: 800;
+    font-size: 14pt;
+}
+.panel-body{
+    font-size: 14pt;
+    font-weight:600;
+}
+.title{
+    font-size:12pt;
+    font-family: Arial,sans-serif,"Helvetica Neue","Microsoft YaHei UI";
+    font-weight:600;
+    margin:10px 0;
+}
+.command{
+    font-size: 40pt;
+    font-weight: 800;
+    font-family: Arial;
+    margin: 10px;
+}
+.line{
+    margin: 10px;
+}
+.shell{
+    color: #909090;
+}
+.cli{
+    font-family: Arial,sans-serif,"Helvetica Neue","Microsoft YaHei UI";
+    font-size: 14px;
+    font-weight:bold;
+    color: #333;
+    margin-left: 5px;
+}
+.response{
+    font-family: Consolas;
+    font-size: 14px;
+}
+.comment{
+    margin: 15px 0;
+    color: #027069;
+}
+.dir{
+    display: none;
 }

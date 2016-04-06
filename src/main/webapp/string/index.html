@@ -1,0 +1,38 @@
+<div class="dir">string</div>
+<div class="row">
+
+    <div class="col-md-3">
+
+        <ul class="list-group">
+            <li class="list-group-item current">APPEND</li>
+            <li class="list-group-item">DUMP</li>
+            <li class="list-group-item"> EXISTS</li>
+            <li class="list-group-item"> EXPIRE</li>
+            <li class="list-group-item"> EXPIREAT</li>
+            <li class="list-group-item"> KEYS</li>
+            <li class="list-group-item"> MIGRATE</li>
+            <li class="list-group-item"> MOVE</li>
+            <li class="list-group-item"> OBJECT</li>
+            <li class="list-group-item"> PERSIST</li>
+            <li class="list-group-item"> PEXPIRE</li>
+            <li class="list-group-item"> PEXPIREAT</li>
+            <li class="list-group-item"> PTTL</li>
+            <li class="list-group-item"> RANDOMKEY</li>
+            <li class="list-group-item"> RENAME</li>
+            <li class="list-group-item"> RENAMENX</li>
+            <li class="list-group-item"> RESTORE</li>
+            <li class="list-group-item"> SORT</li>
+            <li class="list-group-item"> TTL</li>
+            <li class="list-group-item"> TYPE</li>
+            <li class="list-group-item"> SCAN</li>
+        </ul>
+    </div>
+
+    <div class="cli-man"></div>
+</div>
+<script>
+    $(function () {
+        cli();
+        $("#cli-man").load($(".dir").html() + "/del.html");
+    })
+</script>
