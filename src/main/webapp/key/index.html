@@ -35,6 +35,28 @@
 <script>
     $(function () {
         cli();
-        $("#cli-man").load($(".dir").html() + "/del.html");
+        var url = window.location.href;
+        var name = getUrlParam("name");
+        if (name == '') {
+            $("#cli-man").load($(".dir").html() + "/del.html");
+        } else {
+            $("#cli-man").load(name + ".html");
+            $(".list-group-item").each(function(){
+                if($(this).text().toLowerCase()==name){
+                    $(this).addClass("current");
+                    $(this).siblings().removeClass("current");
+                }
+            })
+        }
+
     })
+
+
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return unescape(r[2]);
+        return null;
+    }
 </script>

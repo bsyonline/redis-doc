@@ -26,31 +26,1553 @@
     <div class="header">
         <div class="row">
             <ul class="nav nav-tabs">
-                <li role="presentation" class="active"><a href="#">Home</a></li>
-                <li role="presentation" id="key"><a href="#">Key</a></li>
-                <li role="presentation"><a href="#">String</a></li>
-                <li role="presentation"><a href="#">Hash</a></li>
-                <li role="presentation"><a href="#">List</a></li>
-                <li role="presentation"><a href="#">Set</a></li>
-                <li role="presentation"><a href="#">SortedSet</a></li>
-                <li role="presentation"><a href="#">HyperLogLog</a></li>
-                <li role="presentation"><a href="#">GEO</a></li>
-                <li role="presentation"><a href="#">Server</a></li>
+                <li role="presentation" class="active"><a href="javascript:void(0)">Home</a></li>
+                <li role="presentation" id="key"><a href="javascript:void(0)">Key</a></li>
+                <li role="presentation"><a href="javascript:void(0)">String</a></li>
+                <li role="presentation"><a href="javascript:void(0)">Hash</a></li>
+                <li role="presentation"><a href="javascript:void(0)">List</a></li>
+                <li role="presentation"><a href="javascript:void(0)">Set</a></li>
+                <li role="presentation"><a href="javascript:void(0)">SortedSet</a></li>
+                <li role="presentation"><a href="javascript:void(0)">HyperLogLog</a></li>
+                <li role="presentation"><a href="javascript:void(0)">GEO</a></li>
+                <li role="presentation"><a href="javascript:void(0)">Server</a></li>
             </ul>
         </div>
     </div>
     <div id="cli-page">
+        <div>
+            <table class="table table-bordered">
+                <tr>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">APPEND</a>
+							<span class="args">key value</span>
+						</span>
+                        <div class="more">Append a value to a key</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">AUTH</a>
+							<span class="args">password</span>
+						</span>
+                        <div class="more">Authenticate to the server</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">BGREWRITEAOF</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Asynchronously rewrite the append-only file</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">BGSAVE</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Asynchronously save the dataset to disk</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">BITCOUNT</a>
+							<span class="args">key [start end]</span>
+						</span>
+                        <div class="more">Count set bits in a string</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">BITOP</a>
+							<span class="args">operation destkey key [key ...]</span>
+						</span>
+                        <div class="more">Perform bitwise operations between strings</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">BITPOS</a>
+							<span class="args">key bit [start] [end]</span>
+						</span>
+                        <div class="more">Find first bit set or clear in a string</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">BLPOP</a>
+							<span class="args">key [key ...] timeout</span>
+						</span>
+                        <div class="more">Remove and get the first element in a list, or block until one is available
+                        </div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">BRPOP</a>
+							<span class="args">key [key ...] timeout</span>
+						</span>
+                        <div class="more">Remove and get the last element in a list, or block until one is available
+                        </div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">BRPOPLPUSH</a>
+							<span class="args">source destination timeout</span>
+						</span>
+                        <div class="more">Pop a value from a list, push it to another list and return it; or block
+                            until one is available
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CLIENT KILL</a>
+							<span class="args">[ip:port] [ID client-id] [TYPE normal|master|slave|pubsub] [ADDR ip:port] [SKIPME yes/no]</span>
+						</span>
+                        <div class="more">Kill the connection of a client</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CLIENT LIST</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Get the list of client connections</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CLIENT GETNAME</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Get the current connection name</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CLIENT PAUSE</a>
+							<span class="args">timeout</span>
+						</span>
+                        <div class="more">Stop processing commands from clients for some time</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CLIENT REPLY</a>
+							<span class="args">ON|OFF|SKIP</span>
+						</span>
+                        <div class="more">Instruct the server whether to reply to commands</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CLIENT SETNAME</a>
+							<span class="args">connection-name</span>
+						</span>
+                        <div class="more">Set the current connection name</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CLUSTER ADDSLOTS</a>
+							<span class="args">slot [slot ...]</span>
+						</span>
+                        <div class="more">Assign new hash slots to receiving node</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CLUSTER COUNT-FAILURE-REPORTS</a> <span class="args">node-id</span>
+						</span>
+                        <div class="more">Return the number of failure reports active for a given node</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CLUSTER COUNTKEYSINSLOT</a>
+							<span class="args">slot</span>
+						</span>
+                        <div class="more">Return the number of local keys in the specified hash slot</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CLUSTER DELSLOTS</a>
+							<span class="args">slot [slot ...]</span>
+						</span>
+                        <div class="more">Set hash slots as unbound in receiving node</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CLUSTER FAILOVER</a>
+							<span class="args">[FORCE|TAKEOVER]</span>
+						</span>
+                        <div class="more">Forces a slave to perform a manual failover of its master.</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CLUSTER FORGET</a>
+							<span class="args">node-id</span>
+						</span>
+                        <div class="more">Remove a node from the nodes table.</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CLUSTER GETKEYSINSLOT</a>
+							<span class="args">slot count</span>
+						</span>
+                        <div class="more">Return local key names in the specified hash slot.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CLUSTER INFO</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Provides info about Redis Cluster node state.</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CLUSTER KEYSLOT</a>
+							<span class="args">key</span>
+						</span>
+                        <div class="more">Returns the hash slot of the specified key.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CLUSTER MEET</a>
+							<span class="args">ip port</span>
+						</span>
+                        <div class="more">Force a node cluster to handshake with another node.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CLUSTER NODES</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Get Cluster config for the node.</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CLUSTER REPLICATE</a>
+							<span class="args">node-id</span>
+						</span>
+                        <div class="more">Reconfigure a node as a slave of the specified master node.</div>
+                    </td>
 
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CLUSTER RESET</a>
+							<span class="args">[HARD|SOFT]</span>
+						</span>
+                        <div class="more">Reset a Redis Cluster node.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CLUSTER SAVECONFIG</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Forces the node to save cluster state on disk.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CLUSTER SET-CONFIG-EPOCH</a>
+							<span class="args">config-epoch</span>
+						</span>
+                        <div class="more">Set the configuration epoch in a new node.</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CLUSTER SETSLOT</a>
+							<span class="args">slot IMPORTING|MIGRATING|STABLE|NODE [node-id]</span>
+						</span>
+                        <div class="more">Bind a hash slot to a specific node.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CLUSTER SLAVES</a>
+							<span class="args">node-id</span>
+						</span>
+                        <div class="more">List slave nodes of the specified master node.</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CLUSTER SLOTS</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Get array of Cluster slot to node mappings.</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">COMMAND</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Get array of Redis command details.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">COMMAND COUNT</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Get total number of Redis commands.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">COMMAND GETKEYS</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Extract keys given a full Redis command</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">COMMAND INFO</a>
+							<span class="args">command-name [command-name ...]</span>
+						</span>
+                        <div class="more">Get array of specific Redis command details.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CONFIG GET</a>
+							<span class="args">parameter</span>
+						</span>
+                        <div class="more">Get the value of a configuration parameter.</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CONFIG REWRITE</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Rewrite the configuration file with the in memory configuration.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CONFIG SET</a>
+							<span class="args">parameter value</span>
+						</span>
+                        <div class="more">Set a configuration parameter to the given value.</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">CONFIG RESETSTAT</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Reset the stats returned by INFO.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">DBSIZE</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Return the number of keys in the selected database.</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">DEBUG OBJECT</a>
+							<span class="args">key</span>
+						</span>
+                        <div class="more">Get debugging information about a key.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">DEBUG SEGFAULT</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Make the server crash.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">DECR</a>
+							<span class="args">key</span>
+						</span>
+                        <div class="more">Decrement the integer value of a key by one.</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">DECRBY</a>
+							<span class="args">key decrement</span>
+						</span>
+                        <div class="more">Decrement the integer value of a key by the given number.</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)" type="key">DEL</a>
+							<span class="args">key [key ...]</span>
+						</span>
+                        <div class="more">Delete a key.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">DISCARD</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Discard all commands issued after MULTI.</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)" type="key">DUMP</a>
+							<span class="args">key</span>
+						</span>
+                        <div class="more">Return a serialized version of the value stored at the specified key.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">ECHO</a>
+							<span class="args">message</span>
+						</span>
+                        <div class="more">Echo the given string.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">EVAL</a>
+							<span class="args">script numkeys key [key ...] arg [arg ...]</span>
+						</span>
+                        <div class="more">Execute a Lua script server side.</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">EVALSHA</a> <span class="args">sha1 numkeys key [key ...] arg [arg ...]</span>
+						</span>
+                        <div class="more">Execute a Lua script server side.</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">EXEC</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Execute all commands issued after MULTI.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">EXISTS</a>
+							<span class="args">key [key ...]</span>
+						</span>
+                        <div class="more">Determine if a key exists.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">EXPIRE</a>
+							<span class="args">key seconds</span>
+						</span>
+                        <div class="more">Set a key's time to live in seconds.</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">EXPIREAT</a>
+							<span class="args">key timestamp</span>
+						</span>
+                        <div class="more">Set the expiration for a key as a UNIX timestamp.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">FLUSHALL</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Remove all keys from all databases.</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">FLUSHDB</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Remove all keys from the current database.</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">GEOADD</a>
+							<span class="args">key longitude latitude member [longitude latitude member ...]</span>
+						</span>
+                        <div class="more">Add one or more geospatial items in the geospatial index represented using a
+                            sorted set.
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">GEOHASH</a>
+							<span class="args">key member [member ...]</span>
+						</span>
+                        <div class="more">Returns members of a geospatial index as standard geohash strings.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">GEOPOS</a>
+							<span class="args">key member [member ...]</span>
+						</span>
+                        <div class="more">Returns longitude and latitude of members of a geospatial index.</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">GEODIST</a>
+							<span class="args">key member1 member2 [unit]</span>
+						</span>
+                        <div class="more">Returns the distance between two members of a geospatial index.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">GEORADIUS</a>
+							<span class="args">key longitude latitude radius m|km|ft|mi [WITHCOORD] [WITHDIST] [WITHHASH] [COUNT count]</span>
+						</span>
+                        <div class="more">Query a sorted set representing a geospatial index to fetch members matching
+                            a given maximum distance from a point.
+                        </div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">GEORADIUSBYMEMBER</a>
+							<span class="args">key member radius m|km|ft|mi [WITHCOORD] [WITHDIST] [WITHHASH] [COUNT count]</span>
+						</span>
+                        <div class="more">Query a sorted set representing a geospatial index to fetch members matching
+                            a given maximum distance from a member.
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">GET</a>
+							<span class="args">key</span>
+						</span>
+                        <div class="more">Get the value of a key.</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">GETBIT</a>
+							<span class="args">key offset</span>
+						</span>
+                        <div class="more">Returns the bit value at offset in the string value stored at key.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">GETRANGE</a>
+							<span class="args">key start end</span>
+						</span>
+                        <div class="more">Get a substring of the string stored at a key.</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">GETSET</a>
+							<span class="args">key value</span>
+						</span>
+                        <div class="more">Set the string value of a key and return its old value.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">HDEL</a>
+							<span class="args">key field [field ...]</span>
+						</span>
+                        <div class="more">Delete one or more hash fields.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">HEXISTS</a>
+							<span class="args">key field</span>
+						</span>
+                        <div class="more">Determine if a hash field exists.</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">HGET</a>
+							<span class="args">key field</span>
+						</span>
+                        <div class="more">Get the value of a hash field.</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">HGETALL</a>
+							<span class="args">key</span>
+						</span>
+                        <div class="more">Get all the fields and values in a hash.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">HINCRBY</a>
+							<span class="args">key field increment</span>
+						</span>
+                        <div class="more">Increment the integer value of a hash field by the given number.</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">HINCRBYFLOAT</a>
+							<span class="args">key field increment</span>
+						</span>
+                        <div class="more">Increment the float value of a hash field by the given amount.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">HKEYS</a>
+							<span class="args">key</span>
+						</span>
+                        <div class="more">Get all the fields in a hash.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">HLEN</a>
+							<span class="args">key</span>
+						</span>
+                        <div class="more">Get the number of fields in a hash.</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">HMGET</a>
+							<span class="args">key field [field ...]</span>
+						</span>
+                        <div class="more">Get the values of all the given hash fields.</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">HMSET</a> <span class="args">key field value [field value ...]</span>
+						</span>
+                        <div class="more">Set multiple hash fields to multiple values.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">HSET</a>
+							<span class="args">key field value</span>
+						</span>
+                        <div class="more">Set the string value of a hash field.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">HSETNX</a>
+							<span class="args">key field value</span>
+						</span>
+                        <div class="more">Set the value of a hash field, only if the field does not exist.</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">HSTRLEN</a>
+							<span class="args">key field</span>
+						</span>
+                        <div class="more">Get the length of the value of a hash field.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">HVALS</a>
+							<span class="args">key</span>
+						</span>
+                        <div class="more">Get all the values in a hash.</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">INCR</a>
+							<span class="args">key</span>
+						</span>
+                        <div class="more">Increment the integer value of a key by one.</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">INCRBY</a>
+							<span class="args">key increment</span>
+						</span>
+                        <div class="more">Increment the integer value of a key by the given amount.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">INCRBYFLOAT</a>
+							<span class="args">key increment</span>
+						</span>
+                        <div class="more">Increment the float value of a key by the given amount.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">INFO</a>
+							<span class="args">[section]</span>
+						</span>
+                        <div class="more">Get information and statistics about the server.</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">KEYS</a>
+							<span class="args">pattern</span>
+						</span>
+                        <div class="more">Find all keys matching the given pattern.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">LASTSAVE</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Get the UNIX time stamp of the last successful save to disk.</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">LINDEX</a>
+							<span class="args">key index</span>
+						</span>
+                        <div class="more">Get an element from a list by its index.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">LINSERT</a>
+							<span class="args">key BEFORE|AFTER pivot value</span>
+						</span>
+                        <div class="more">Insert an element before or after another element in a list.</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">LLEN</a>
+							<span class="args">key</span>
+						</span>
+                        <div class="more">Get the length of a list.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">LPOP</a>
+							<span class="args">key</span>
+						</span>
+                        <div class="more">Remove and get the first element in a list.</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">LPUSH</a>
+							<span class="args">key value [value ...]</span>
+						</span>
+                        <div class="more">Prepend one or multiple values to a list.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">LPUSHX</a>
+							<span class="args">key value</span>
+						</span>
+                        <div class="more">Prepend a value to a list, only if the list exists</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">LRANGE</a>
+							<span class="args">key start stop</span>
+						</span>
+                        <div class="more">Get a range of elements from a list.</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">LREM</a>
+							<span class="args">key count value</span>
+						</span>
+                        <div class="more">Remove elements from a list.</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">LSET</a>
+							<span class="args">key index value</span>
+						</span>
+                        <div class="more">Set the value of an element in a list by its index.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">LTRIM</a>
+							<span class="args">key start stop</span>
+						</span>
+                        <div class="more">Trim a list to the specified range.</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">MGET</a>
+							<span class="args">key [key ...]</span>
+						</span>
+                        <div class="more">Get the values of all the given keys.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">MIGRATE</a>
+							<span class="args">host port key|"" destination-db timeout [COPY] [REPLACE] [KEYS key [key ...]]</span>
+						</span>
+                        <div class="more">Atomically transfer a key from a Redis instance to another one.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">MONITOR</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Listen for all requests received by the server in real time.</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">MOVE</a>
+							<span class="args">key db</span>
+						</span>
+                        <div class="more">Move a key to another database.</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">MSET</a>
+							<span class="args">key value [key value ...]</span>
+						</span>
+                        <div class="more">Set multiple keys to multiple values.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">MSETNX</a>
+							<span class="args">key value [key value ...]</span>
+						</span>
+                        <div class="more">Set multiple keys to multiple values, only if none of the keys exist.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">MULTI</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Mark the start of a transaction block</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">OBJECT</a> <span class="args">subcommand [arguments [arguments ...]]</span>
+						</span>
+                        <div class="more">Inspect the internals of Redis objects.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">PERSIST</a>
+							<span class="args">key</span>
+						</span>
+                        <div class="more">Remove the expiration from a key.</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">PEXPIRE</a>
+							<span class="args">key milliseconds</span>
+						</span>
+                        <div class="more">Set a key's time to live in milliseconds.</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">PEXPIREAT</a>
+							<span class="args">key milliseconds-timestamp</span>
+						</span>
+                        <div class="more">Set the expiration for a key as a UNIX timestamp specified in milliseconds.
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">PFADD</a>
+							<span class="args">key element [element ...]</span>
+						</span>
+                        <div class="more">Adds the specified elements to the specified HyperLogLog.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">PFCOUNT</a>
+							<span class="args">key [key ...]</span>
+						</span>
+                        <div class="more">Return the approximated cardinality of the set(s) observed by the HyperLogLog
+                            at key(s).
+                        </div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">PFMERGE</a> <span class="args">destkey sourcekey [sourcekey ...]</span>
+						</span>
+                        <div class="more">Merge N different HyperLogLogs into a single one.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">PING</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Ping the server</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">PSETEX</a>
+							<span class="args">key milliseconds value</span>
+						</span>
+                        <div class="more">Set the value and expiration in milliseconds of a key.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">PSUBSCRIBE</a>
+							<span class="args">pattern [pattern ...]</span>
+						</span>
+                        <div class="more">Listen for messages published to channels matching the given patterns.</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">PUBSUB</a> <span class="args">subcommand [argument [argument ...]]</span>
+						</span>
+                        <div class="more">Inspect the state of the Pub/Sub subsystem.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">PTTL</a>
+							<span class="args">key</span>
+						</span>
+                        <div class="more">Get the time to live for a key in milliseconds.</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">PUBLISH</a>
+							<span class="args">channel message</span>
+						</span>
+                        <div class="more">Post a message to a channel.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">PUNSUBSCRIBE</a> <span class="args">[pattern [pattern ...]]</span>
+						</span>
+                        <div class="more">Stop listening for messages posted to channels matching the given patterns.
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">QUIT</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Close the connection.</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">RANDOMKEY</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Return a random key from the keyspace.</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">READONLY</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Enables read queries for a connection to a cluster slave node.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">READWRITE</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Disables read queries for a connection to a cluster slave node.</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">RENAME</a>
+							<span class="args">key newkey</span>
+						</span>
+                        <div class="more">Rename a key.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">RENAMENX</a>
+							<span class="args">key newkey</span>
+						</span>
+                        <div class="more">Rename a key, only if the new key does not exist</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">RESTORE</a>
+							<span class="args">key ttl serialized-value [REPLACE]</span>
+						</span>
+                        <div class="more">Create a key using the provided serialized value, previously obtained using
+                            DUMP.
+                        </div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">ROLE</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Return the role of the instance in the context of replication.</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">RPOP</a>
+							<span class="args">key</span>
+						</span>
+                        <div class="more">Remove and get the last element in a list.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">RPOPLPUSH</a>
+							<span class="args">source destination</span>
+						</span>
+                        <div class="more">Remove the last element in a list, prepend it to another list and return
+                            it.
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">RPUSH</a>
+							<span class="args">key value [value ...]</span>
+						</span>
+                        <div class="more">Append one or multiple values to a list.</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">RPUSHX</a>
+							<span class="args">key value</span>
+						</span>
+                        <div class="more">Append a value to a list, only if the list exists.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SADD</a>
+							<span class="args">key member [member ...]</span>
+						</span>
+                        <div class="more">Add one or more members to a set.</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SAVE</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Synchronously save the dataset to disk.</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SCARD</a>
+							<span class="args">key</span>
+						</span>
+                        <div class="more">Get the number of members in a set.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SCRIPT DEBUG</a>
+							<span class="args">YES|SYNC|NO</span>
+						</span>
+                        <div class="more">Set the debug mode for executed scripts.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SCRIPT EXISTS</a>
+							<span class="args">script [script ...]</span>
+						</span>
+                        <div class="more">Check existence of scripts in the script cache.</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SCRIPT FLUSH</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Remove all the scripts from the script cache.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SCRIPT KILL</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Kill the script currently in execution.</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SCRIPT LOAD</a>
+							<span class="args">script</span>
+						</span>
+                        <div class="more">Load the specified Lua script into the script cache.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SDIFF</a>
+							<span class="args">key [key ...]</span>
+						</span>
+                        <div class="more">Subtract multiple sets.</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SDIFFSTORE</a>
+							<span class="args">destination key [key ...]</span>
+						</span>
+                        <div class="more">Subtract multiple sets and store the resulting set in a key.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SELECT</a>
+							<span class="args">index</span>
+						</span>
+                        <div class="more">Change the selected database for the current connection.</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SET</a>
+							<span class="args">key value [EX seconds] [PX milliseconds] [NX|XX]</span>
+						</span>
+                        <div class="more">Set the string value of a key.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SETBIT</a>
+							<span class="args">key offset value</span>
+						</span>
+                        <div class="more">Sets or clears the bit at offset in the string value stored at key.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SETEX</a>
+							<span class="args">key seconds value</span>
+						</span>
+                        <div class="more">Set the value and expiration of a key.</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SETNX</a>
+							<span class="args">key value</span>
+						</span>
+                        <div class="more">Set the value of a key, only if the key does not exist.</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SETRANGE</a>
+							<span class="args">key offset value</span>
+						</span>
+                        <div class="more">Overwrite part of a string at key starting at the specified offset.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SHUTDOWN</a>
+							<span class="args">[NOSAVE|SAVE]</span>
+						</span>
+                        <div class="more">Synchronously save the dataset to disk and then shut down the server.</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SINTER</a>
+							<span class="args">key [key ...]</span>
+						</span>
+                        <div class="more">Intersect multiple sets.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SINTERSTORE</a> <span class="args">destination key [key ...]</span>
+						</span>
+                        <div class="more">Intersect multiple sets and store the resulting set in a key.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SISMEMBER</a>
+							<span class="args">key member</span>
+						</span>
+                        <div class="more">Determine if a given value is a member of a set.</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SLAVEOF</a>
+							<span class="args">host port</span>
+						</span>
+                        <div class="more">Make the server a slave of another instance, or promote it as master.</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SLOWLOG</a>
+							<span class="args">subcommand [argument]</span>
+						</span>
+                        <div class="more">Manages the Redis slow queries log.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SMEMBERS</a>
+							<span class="args">key</span>
+						</span>
+                        <div class="more">Get all the members in a set.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SMOVE</a>
+							<span class="args">source destination member</span>
+						</span>
+                        <div class="more">Move a member from one set to another.</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SORT</a>
+							<span class="args">key [BY pattern] [LIMIT offset count] [GET pattern [GET pattern ...]] [ASC|DESC] [ALPHA] [STORE destination]</span>
+						</span>
+                        <div class="more">Sort the elements in a list, set or sorted set.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SPOP</a>
+							<span class="args">key [count]</span>
+						</span>
+                        <div class="more">Remove and return one or multiple random members from a set.</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SRANDMEMBER</a>
+							<span class="args">key [count]</span>
+						</span>
+                        <div class="more">Get one or multiple random members from a set.</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SREM</a>
+							<span class="args">key member [member ...]</span>
+						</span>
+                        <div class="more">Remove one or more members from a set.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">STRLEN</a>
+							<span class="args">key</span>
+						</span>
+                        <div class="more">Get the length of the value stored in a key.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SUBSCRIBE</a>
+							<span class="args">channel [channel ...]</span>
+						</span>
+                        <div class="more">Listen for messages published to the given channels.</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SUNION</a>
+							<span class="args">key [key ...]</span>
+						</span>
+                        <div class="more">Add multiple sets.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SUNIONSTORE</a>
+							<span class="args">destination key [key ...]</span>
+						</span>
+                        <div class="more">Add multiple sets and store the resulting set in a key.</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SYNC</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Internal command used for replication.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">TIME</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Return the current server time.</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">TTL</a>
+							<span class="args">key</span>
+						</span>
+                        <div class="more">Get the time to live for a key.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">TYPE</a>
+							<span class="args">key</span>
+						</span>
+                        <div class="more">Determine the type stored at key.</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">UNSUBSCRIBE</a>
+							<span class="args">[channel [channel ...]]</span>
+						</span>
+                        <div class="more">Stop listening for messages posted to the given channels.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">UNWATCH</a>
+							<span class="args"></span>
+						</span>
+                        <div class="more">Forget about all watched keys.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">WAIT</a>
+							<span class="args">numslaves timeout</span>
+						</span>
+                        <div class="more">Wait for the synchronous replication of all the write commands sent in the
+                            context of the current connection.
+                        </div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">WATCH</a>
+							<span class="args">key [key ...]</span>
+						</span>
+                        <div class="more">Watch the given keys to determine execution of the MULTI/EXEC block.</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">ZADD</a>
+							<span class="args">key [NX|XX] [CH] [INCR] score member [score member ...]</span>
+						</span>
+                        <div class="more">Add one or more members to a sorted set, or update its score if it already
+                            exists.
+                        </div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">ZCARD</a>
+							<span class="args">key</span>
+						</span>
+                        <div class="more">Get the number of members in a sorted set.</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">ZCOUNT</a>
+							<span class="args">key min max</span>
+						</span>
+                        <div class="more">Count the members in a sorted set with scores within the given values</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">ZINCRBY</a>
+							<span class="args">key increment member</span>
+						</span>
+                        <div class="more">Increment the score of a member in a sorted set.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">ZINTERSTORE</a>
+							<span class="args">destination numkeys key [key ...] [WEIGHTS weight [weight ...]] [AGGREGATE SUM|MIN|MAX]</span>
+						</span>
+                        <div class="more">Intersect multiple sorted sets and store the resulting sorted set in a new
+                            key.
+                        </div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">ZLEXCOUNT</a>
+							<span class="args">key min max</span>
+						</span>
+                        <div class="more">Count the number of members in a sorted set between a given lexicographical
+                            range.
+                        </div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">ZRANGE</a>
+							<span class="args">key start stop [WITHSCORES]</span>
+						</span>
+                        <div class="more">Return a range of members in a sorted set, by index.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">ZRANGEBYLEX</a>
+							<span class="args">key min max [LIMIT offset count]</span>
+						</span>
+                        <div class="more">Return a range of members in a sorted set, by lexicographical range.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">ZREVRANGEBYLEX</a>
+							<span class="args">key max min [LIMIT offset count]</span>
+						</span>
+                        <div class="more">Return a range of members in a sorted set, by lexicographical range, ordered
+                            from higher to lower strings.
+                        </div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">ZRANGEBYSCORE</a>
+							<span class="args">key min max [WITHSCORES] [LIMIT offset count]</span>
+						</span>
+                        <div class="more">Return a range of members in a sorted set, by score.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">ZRANK</a>
+							<span class="args">key member</span>
+						</span>
+                        <div class="more">Determine the index of a member in a sorted set.</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">ZREM</a>
+							<span class="args">key member [member ...]</span>
+						</span>
+                        <div class="more">Remove one or more members from a sorted set.</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">ZREMRANGEBYLEX</a>
+							<span class="args">key min max</span>
+						</span>
+                        <div class="more">Remove all members in a sorted set between the given lexicographical range.
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">ZREMRANGEBYRANK</a>
+							<span class="args">key start stop</span>
+						</span>
+                        <div class="more">Remove all members in a sorted set within the given indexes.</div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">ZREMRANGEBYSCORE</a>
+							<span class="args">key min max</span>
+						</span>
+                        <div class="more">Remove all members in a sorted set within the given scores.</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">ZREVRANGE</a>
+							<span class="args">key start stop [WITHSCORES]</span>
+						</span>
+                        <div class="more">Return a range of members in a sorted set, by index, with scores ordered from
+                            high to low.
+                        </div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">ZREVRANGEBYSCORE</a>
+							<span class="args">key max min [WITHSCORES] [LIMIT offset count]</span>
+						</span>
+                        <div class="more">Return a range of members in a sorted set, by score, with scores ordered from
+                            high to low.
+                        </div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">ZREVRANK</a>
+							<span class="args">key member</span>
+						</span>
+                        <div class="more">Determine the index of a member in a sorted set, with scores ordered from
+                            high to low
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">ZSCORE</a>
+							<span class="args">key member</span>
+						</span>
+                        <div class="more">Get the score associated with the given member in a sorted set</div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">ZUNIONSTORE</a>
+							<span class="args">destination numkeys key [key ...] [WEIGHTS weight [weight ...]] [AGGREGATE SUM|MIN|MAX]</span>
+						</span>
+                        <div class="more">Add multiple sorted sets and store the resulting sorted set in a new key.
+                        </div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SCAN</a>
+							<span class="args">cursor [MATCH pattern] [COUNT count]</span>
+						</span>
+                        <div class="more">Incrementally iterate the keys space.</div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">SSCAN</a>
+							<span class="args">key cursor [MATCH pattern] [COUNT count]</span>
+						</span>
+                        <div class="more">Incrementally iterate Set elements.</div>
+                    </td>
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">HSCAN</a>
+							<span class="args">key cursor [MATCH pattern] [COUNT count]</span>
+						</span>
+                        <div class="more">Incrementally iterate hash fields and associated values.</div>
+                    </td>
+                </tr>
+                <tr>
+
+                    <td class="success">
+                        <span class="cli-name">
+							<a href="javascript:void(0)">ZSCAN</a>
+							<span class="args">key cursor [MATCH pattern] [COUNT count]</span>
+						</span>
+                        <div class="more">Incrementally iterate sorted sets elements and associated scores.</div>
+                    </td>
+                    <td class="warning">
+                        <span class="cli-name">
+							<a href="javascript:void(0)"></a>
+							<span class="args"></span>
+						</span>
+                        <div class="more"></div>
+                    </td>
+                    <td class="danger">
+                        <span class="cli-name">
+							<a href="javascript:void(0)"></a>
+							<span class="args"></span>
+						</span>
+                        <div class="more"></div>
+                    </td>
+                    <td class="info">
+                        <span class="cli-name">
+							<a href="javascript:void(0)"></a>
+							<span class="args"></span>
+						</span>
+                        <div class="more"></div>
+                    </td>
+                    <td class="active">
+                        <span class="cli-name">
+							<a href="javascript:void(0)"></a>
+							<span class="args"></span>
+						</span>
+                        <div class="more"></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 
 </div>
 <script>
     $(function () {
-        $("[role='presentation']").bind('click',function(){
+        $("[role='presentation']").bind('click', function () {
             var dir = $(this).text().toLowerCase();
             $("#cli-page").load(dir + "/index.html");
             $(this).siblings().removeClass("active");
             $(this).addClass("active");
+        })
+        $(".cli-name > a").bind('click',function(){
+
+            var type = $(this).attr("type");
+            var name = $(this).text().toLowerCase();
+
+            $("#cli-page").load(type + "/index.html?name="+name);
+            var url = type + "/index.html?name="+name;
+            window.history.replaceState(null,null,url);
         })
     })
 </script>

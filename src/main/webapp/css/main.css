@@ -48,3 +48,25 @@
 .dir{
     display: none;
 }
+.cli-name{
+    font-family: Arial,sans-serif,"Helvetica Neue","Microsoft YaHei UI";
+    font-size: 12px;
+    margin-left: 5px;
+    display:block;white-space: nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.args{
+    font-size: 10px;
+
+
+}
+.more{
+    font-size: 12px;
+    margin: 10px 5px;
+}
+.table{
+    table-layout: fixed;
+}
+td{
+    height:100px;
+    width:20%;
+}
