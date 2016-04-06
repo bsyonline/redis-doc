@@ -37,16 +37,27 @@
         cli();
         var url = window.location.href;
         var name = getUrlParam("name");
-        if (name == '') {
+        if (name == null) {
             $("#cli-man").load($(".dir").html() + "/del.html");
         } else {
             $("#cli-man").load(name + ".html");
+            window.history.pushState(null,null,"/redis-doc/");
             $(".list-group-item").each(function(){
                 if($(this).text().toLowerCase()==name){
                     $(this).addClass("current");
                     $(this).siblings().removeClass("current");
+
                 }
             })
+
+            $("[role='presentation']").each(function(){
+                if($(this).text().toLowerCase() == $(".dir").text().toLowerCase()){
+                    $(this).siblings().removeClass("active");
+                    $(this).addClass("active");
+                }
+            });
+            $('html, body').animate({scrollTop:0}, 'slow');
+
         }
 
     })

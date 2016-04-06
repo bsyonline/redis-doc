@@ -70,3 +70,13 @@ td{
     height:100px;
     width:20%;
 }
+.face{
+    font-size:40pt;
+    font-weight:600;
+    margin:20px 0;
+}
+.footer{
+    border-top: solid 1px #ddd;
+    height:50px;
+    margin-top:20px;
+}

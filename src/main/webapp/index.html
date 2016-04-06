@@ -18,15 +18,13 @@
 </head>
 <body>
 <div class="container">
-    <div>
-        <h1>
-            Redis cli Documentation
-        </h1>
+    <div class="face">
+        Redis Cli Documentation
     </div>
     <div class="header">
         <div class="row">
             <ul class="nav nav-tabs">
-                <li role="presentation" class="active"><a href="javascript:void(0)">Home</a></li>
+                <li role="presentation" class="active"><a href="/redis-doc">Home</a></li>
                 <li role="presentation" id="key"><a href="javascript:void(0)">Key</a></li>
                 <li role="presentation"><a href="javascript:void(0)">String</a></li>
                 <li role="presentation"><a href="javascript:void(0)">Hash</a></li>
@@ -1557,6 +1555,9 @@
     </div>
 
 </div>
+<div class="footer">
+
+</div>
 <script>
     $(function () {
         $("[role='presentation']").bind('click', function () {
@@ -1572,7 +1573,7 @@
 
             $("#cli-page").load(type + "/index.html?name="+name);
             var url = type + "/index.html?name="+name;
-            window.history.replaceState(null,null,url);
+            window.history.pushState(null,null,url);
         })
     })
 </script>
