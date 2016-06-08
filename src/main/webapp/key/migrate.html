@@ -1,0 +1,168 @@
+<div class="col-md-9">
+    <div class="row command">MIGRATE</div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    中文说明
+                </div>
+                <div class="panel-footer">
+
+                    <div class="title"> MIGRATE host port key destination-db timeout [COPY][REPLACE] </div>
+
+                    <div class="line">
+                        将 key 原子性地从当前实例传送到目标实例的指定数据库上，一旦传送成功， key 保证会出现在目标实例上，而当前实例上的 key 会被删除。
+                    </div>
+                    <div class="line">
+                        这个命令是一个原子操作，它在执行的时候会阻塞进行迁移的两个实例，直到以下任意结果发生：迁移成功，迁移失败，等待超时。
+                    </div>
+                    <div class="line">
+                        命令的内部实现是这样的：它在当前实例对给定 key 执行 DUMP 命令 ，将它序列化，然后传送到目标实例，目标实例再使用 RESTORE 对数据进行反序列化，并将反序列化所得的数据添加到数据库中；当前实例就像目标实例的客户端那样，只要看到 RESTORE 命令返回 OK ，它就会调用 DEL 删除自己数据库上的 key 。
+                    </div>
+                    <div class="line">
+                        timeout 参数以毫秒为格式，指定当前实例和目标实例进行沟通的最大间隔时间。这说明操作并不一定要在 timeout 毫秒内完成，只是说数据传送的时间不能超过这个 timeout 数。
+                    </div>
+                    <div class="line">
+                        MIGRATE 命令需要在给定的时间规定内完成 IO 操作。如果在传送数据时发生 IO 错误，或者达到了超时时间，那么命令会停止执行，并返回一个特殊的错误： IOERR 。
+                    </div>
+                    <div class="line">
+                        当 IOERR 出现时，有以下两种可能：
+                    </div>
+                    <div class="line">
+                        <ul>
+                            <li>key 可能存在于两个实例</li>
+                            <li>key 可能只存在于当前实例</li>
+                        </ul>
+                        唯一不可能发生的情况就是丢失 key ，因此，如果一个客户端执行 MIGRATE 命令，并且不幸遇上 IOERR 错误，那么这个客户端唯一要做的就是检查自己数据库上的 key 是否已经被正确地删除。
+                    </div>
+                    <div class="line">
+                        如果有其他错误发生，那么 MIGRATE 保证 key 只会出现在当前实例中。（当然，目标实例的给定数据库上可能有和 key 同名的键，不过这和 MIGRATE 命令没有关系）。
+                    </div>
+                    <div class="title">
+                        可选项：
+                    </div>
+                    <div class="line">
+                        <ul>
+                            <li>COPY ：不移除源实例上的 key 。</li>
+                            <li>REPLACE ：替换目标实例上已存在的 key 。</li>
+                        </ul>
+                    </div>
+                    <div class="title">可用版本：</div>
+                    <div class="line">>= 2.6.0</div>
+                    <div class="title">时间复杂度：</div>
+                    <div class="line">
+                        这个命令在源实例上实际执行 DUMP 命令和 DEL 命令，在目标实例执行 RESTORE 命令，查看以上命令的文档可以看到详细的复杂度说明。
+                        key 数据在两个实例之间传输的复杂度为 O(N) 。
+                    </div>
+
+                    <div class="title">返回值：</div>
+                    <div class="line">
+                        迁移成功时返回 OK ，否则返回相应的错误。
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    英文说明
+                </div>
+                <div class="panel-footer">
+
+
+                    <div class="line">
+                        Available since 1.0.0.
+                    </div>
+                    <div class="line">
+                        Atomically transfer a key from a source Redis instance to a destination Redis instance. On success the key is deleted from the original instance and is guaranteed to exist in the target instance.
+                    </div>
+                    <div class="line">
+                        The command is atomic and blocks the two instances for the time required to transfer the key, at any given time the key will appear to exist in a given instance or in the other instance, unless a timeout error occurs. In 3.2 and above, multiple keys can be pipelined in a single call to MIGRATE by passing the empty string ("") as key and adding the KEYS clause.
+                    </div>
+                    <div class="line">
+                        The command internally uses DUMP to generate the serialized version of the key value, and RESTORE in order to synthesize the key in the target instance. The source instance acts as a client for the target instance. If the target instance returns OK to the RESTORE command, the source instance deletes the key using DEL.
+                    </div>
+                    <div class="line">
+                        The timeout specifies the maximum idle time in any moment of the communication with the destination instance in milliseconds. This means that the operation does not need to be completed within the specified amount of milliseconds, but that the transfer should make progresses without blocking for more than the specified amount of milliseconds.
+                    </div>
+                    <div class="line">
+                        <b>MIGRATE</b> needs to perform I/O operations and to honor the specified timeout. When there is an I/O error during the transfer or if the timeout is reached the operation is aborted and the special error - IOERR returned. When this happens the following two cases are possible:
+                    </div>
+                    <div class="line">
+                        The key may be on both the instances.
+                        The key may be only in the source instance.
+                    </div>
+                    <div class="line">
+                        It is not possible for the key to get lost in the event of a timeout, but the client calling MIGRATE, in the event of a timeout error, should check if the key is also present in the target instance and act accordingly.
+                    </div>
+                    <div class="line">
+                        When any other error is returned (starting with ERR) MIGRATE guarantees that the key is still only present in the originating instance (unless a key with the same name was also already present on the target instance).
+                    </div>
+                    <div class="line">
+                        If there are no keys to migrate in the source instance NOKEY is returned. Because missing keys are possible in normal conditions, from expiry for example, NOKEY isn't an error.
+                    </div>
+                    <div class="line">
+
+
+                        <b>Migrating multiple keys with a single command call</b>
+                    </div>
+                    <div class="line">
+                        Starting with Redis 3.0.6 MIGRATE supports a new bulk-migration mode that uses pipelining in order to migrate multiple keys between instances without incurring in the round trip time latency and other overheads that there are when moving each key with a single MIGRATE call.
+                    </div>
+                    <div class="line">
+                        In order to enable this form, the KEYS option is used, and the normal key argument is set to an empty string. The actual key names will be provided after the KEYS argument itself, like in the following example:
+                    </div>
+                    <div class="line">
+                        <b>MIGRATE 192.168.1.34 6379 "" 0 5000 KEYS key1 key2 key3</b>
+                    </div>
+                    <div class="line">
+                        When this form is used the NOKEY status code is only returned when none of the keys is present in the instance, otherwise the command is executed, even if just a single key exists.
+                    </div>
+                    <div class="title">
+                        Options
+                    </div>
+                    <div class="line">
+                        <ul>
+                            <li>COPY -- Do not remove the key from the local instance.</li>
+                            <li>REPLACE -- Replace existing key on the remote instance.</li>
+                            <li>KEYS -- If the key argument is an empty string, the command will instead migrate all the keys that follow the KEYS option (see the above section for more info).</li>
+                        </ul>
+
+                        COPY and REPLACE are available only in 3.0 and above. KEYS is available starting with Redis 3.0.6.
+                    </div>
+
+                    <div class="title">Time complexity:</div>
+                    <div class="line">
+                        This command actually executes a DUMP+DEL in the source instance, and a RESTORE in the target instance. See the pages of these commands for time complexity. Also an O(N) data transfer between the two instances is performed.
+                    </div>
+
+                    <div class="title">Return value</div>
+                    <div class="line">
+                        Simple string reply: The command returns OK on success, or NOKEY if no keys were found in the source instance.
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            示例
+        </div>
+        <div class="panel-footer">
+
+            <span class="shell">redis></span> <span class="cli">SET greeting "Hello from 6379 instance"</span>
+            <div class="response">OK</div>
+
+            <span class="shell">redis></span> <span class="cli">MIGRATE 127.0.0.1 7777 greeting 0 1000</span>
+            <div class="response">OK</div>
+
+            <div class="comment"># 迁移成功后 key 被删除</div>
+            <span class="shell">redis></span> <span class="cli">EXISTS greeting</span>
+            <div class="response">(integer) 0</div>
+
+
+        </div>
+    </div>
+</div>
