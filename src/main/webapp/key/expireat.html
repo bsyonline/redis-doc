@@ -1,0 +1,106 @@
+<div class="col-md-9">
+    <div class="row command">EXPIREAT</div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    中文说明
+                </div>
+                <div class="panel-footer">
+
+                    <div class="title"> EXPIREAT key timestamp </div>
+
+                    <div class="line">
+                        EXPIREAT 的作用和 EXPIRE 类似，都用于为 key 设置生存时间。
+                    </div>
+                    <div class="line">
+                        不同在于 EXPIREAT 命令接受的时间参数是 UNIX 时间戳(unix timestamp)。
+                    </div>
+
+                    <div class="title">可用版本：</div>
+                    <div class="line">>= 1.2.0</div>
+                    <div class="title">时间复杂度：</div>
+                    <div class="line">
+                        O(1)
+                    </div>
+
+                    <div class="title">返回值：</div>
+                    <div class="line">
+                        如果生存时间设置成功，返回 1 。
+                        当 key 不存在或没办法设置生存时间，返回 0 。
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    英文说明
+                </div>
+                <div class="panel-footer">
+
+
+                    <div class="line">
+                        Available since 1.2.0.
+                    </div>
+                    <div class="line">
+                        EXPIREAT has the same effect and semantic as EXPIRE, but instead of specifying the number of seconds representing the TTL (time to live), it takes an absolute Unix timestamp (seconds since January 1, 1970).
+
+                    </div>
+                    <div class="line">
+                        Please for the specific semantics of the command refer to the documentation of EXPIRE.
+                    </div>
+
+                    <div class="title">Background
+                    </div>
+                    <div class="line">
+                        EXPIREAT was introduced in order to convert relative timeouts to absolute timeouts for the AOF persistence mode. Of course, it can be used directly to specify that a given key should expire at a given time in the future.
+                    </div>
+
+                    <div class="title">Time complexity:</div>
+                    <div class="line">
+                        O(1)
+                    </div>
+
+                    <div class="title">Return value</div>
+                    <div class="line">
+                        Integer reply, specifically:
+
+
+                    </div>
+                    <ul>
+                        <li> <div class="line">
+                            1 if the timeout was set.
+                        </div></li>
+                        <li> <div class="line">
+                            0 if key does not exist or the timeout could not be set (see: EXPIRE).
+                        </div></li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            示例
+        </div>
+        <div class="panel-footer">
+
+            <span class="shell">redis></span> <span class="cli">SET mykey "Hello"</span>
+            <div class="response">OK</div>
+
+            <span class="shell">redis></span> <span class="cli">EXISTS mykey</span>
+            <div class="response">(integer) 1</div>
+
+            <div class="comment"># 这个 key 将在 2012.12.12 过期</div>
+            <span class="shell">redis></span> <span class="cli">EXPIREAT mykey 1355292000</span>
+            <div class="response">(integer) 1</div>
+
+            <span class="shell">redis></span> <span class="cli">EXISTS mykey</span>
+            <div class="response">(integer) 0</div>
+
+        </div>
+    </div>
+</div>
