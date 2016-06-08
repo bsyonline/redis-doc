@@ -1,0 +1,132 @@
+<div class="col-md-9">
+    <div class="row command">MOVE</div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    中文说明
+                </div>
+                <div class="panel-footer">
+
+                    <div class="title">MOVE key db</div>
+
+                    <div class="line">将当前数据库的 key 移动到给定的数据库 db 当中。
+                    </div>
+                    <div class="line">
+                        如果当前数据库(源数据库)和给定数据库(目标数据库)有相同名字的给定 key ，或者 key 不存在于当前数据库，那么 MOVE 没有任何效果。
+                    </div>
+                    <div class="line">
+                        因此，也可以利用这一特性，将 MOVE 当作锁(locking)原语(primitive)。
+                    </div>
+                    <div class="title">可用版本：</div>
+                    <div class="line">>= 1.0.0</div>
+                    <div class="title">时间复杂度：</div>
+                    <div class="line">O(N)</div>
+                    <div class="title">返回值：</div>
+                    <div class="line">移动成功返回 1 ，失败则返回 0 。</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    英文说明
+                </div>
+                <div class="panel-footer">
+
+
+                    <div class="line">
+                        Available since 1.0.0.
+                    </div>
+                    <div class="line">
+                        Move key from the currently selected database (see SELECT) to the specified destination database. When key already exists in the destination database, or it does not exist in the source database, it does nothing. It is possible to use MOVE as a locking primitive because of this.
+                    </div>
+                    <div class="title">Time complexity:</div>
+                    <div class="line">
+                        O(N)
+                    </div>
+                    <div class="title">Return value</div>
+                    <div class="line">
+                        Integer reply, specifically:
+                        <ul>
+                            <li>1 if key was moved.</li>
+                            <li>0 if key was not moved.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            示例
+        </div>
+        <div class="panel-footer">
+            <div class="comment"># redis默认使用数据库 0，为了清晰起见，这里再显式指定一次。</div>
+
+            <span class="shell">redis></span> <span class="cli">SELECT 0</span>
+            <div class="response">OK</div>
+
+            <div class="comment"># 将 song 移动到数据库 1</div>
+            <span class="shell">redis></span> <span class="cli">MOVE song 1</span>
+            <div class="response">(integer) 1</div>
+
+            <span class="shell">redis></span><span class="cli">EXISTS song</span>
+            <div class="response">(integer) 0</div>
+
+            <div class="comment"># 使用数据库 1</div>
+
+            <span class="shell">redis></span> <span class="cli">SELECT 1</span>
+            <div class="response">OK</div>
+
+            <div class="comment"># 证实 song 被移到了数据库 1 (注意命令提示符变成了"redis:1"，表明正在使用数据库 1)</div>
+            <span class="shell">redis:1></span> <span class="cli">EXISTS song</span>
+            <div class="response">(integer) 1</div>
+
+
+            <div class="comment"># 当 key 不存在的时候</div>
+            <span class="shell">redis:1></span> <span class="cli">EXISTS fake_key</span>
+            <div class="response">(integer) 0</div>
+
+            <div class="comment"># 试图从数据库 1 移动一个不存在的 key 到数据库 0，失败</div>
+            <span class="shell">redis:1></span> <span class="cli">MOVE fake_key 0 </span>
+            <div class="response">(integer) 0</div>
+
+
+            <span class="shell">redis:1></span> <span class="cli">SELECT 0</span>
+            <div class="response">OK</div>
+            <span class="shell">redis></span> <span class="cli">EXISTS fake_key</span>
+            <div class="response">(integer) 0</div>
+
+
+            <div class="comment"># 当源数据库和目标数据库有相同的 key 时</div>
+            <span class="shell">redis></span> <span class="cli">SELECT 0</span>
+            <div class="response">OK</div>
+            <span class="shell">redis></span> <span class="cli">SET favorite_fruit "banana"</span>
+            <div class="response">OK</div>
+
+            <span class="shell">redis></span> <span class="cli">SELECT 1</span>
+            <div class="response">OK</div>
+            <span class="shell">redis:1></span> <span class="cli">SET favorite_fruit "apple"</span>
+            <div class="response">OK</div>
+            <div class="comment"># 试图将 favorite_fruit 移动到数据库 0，因为两个数据库有相同的 key，MOVE 失败</div>
+            <span class="shell">redis:1></span> <span class="cli">MOVE favorite_fruit 0</span>
+            <div class="response">(integer) 0</div>
+
+            <div class="comment"># 数据库 1 的 favorite_fruit 没变</div>
+            <span class="shell">redis:1></span> <span class="cli">GET favorite_fruit </span>
+            <div class="response">"apple"</div>
+            <span class="shell">redis></span> <span class="cli">SELECT 0</span>
+            <div class="response">OK</div>
+            <span class="shell">redis></span> <span class="cli">GET favorite_fruit </span>
+            <div class="response">"banana"</div>
+
+
+
+
+
+        </div>
+    </div>
+</div>
