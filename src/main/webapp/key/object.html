@@ -1,0 +1,160 @@
+<div class="col-md-9">
+    <div class="row command">OBJECT</div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    中文说明
+                </div>
+                <div class="panel-footer">
+
+                    <div class="title">OBJECT subcommand [arguments [arguments]]</div>
+
+                    <div class="line">OBJECT 命令允许从内部察看给定 key 的 Redis 对象。</div>
+                    <div class="line">
+                        它通常用在除错(debugging)或者了解为了节省空间而对 key 使用特殊编码的情况。</div>
+                    <div class="line">
+                        当将Redis用作缓存程序时，你也可以通过 OBJECT 命令中的信息，决定 key 的驱逐策略(eviction policies)。
+                    </div>
+                    <div class="line">
+                        OBJECT 命令有多个子命令：
+                    </div>
+                    <div class="line">
+                        <ul>
+                            <li>OBJECT REFCOUNT &lt;key&gt; 返回给定 key 引用所储存的值的次数。此命令主要用于除错。</li>
+                            <li>OBJECT ENCODING &lt;key&gt; 返回给定 key 锁储存的值所使用的内部表示(representation)。</li>
+                            <li>OBJECT IDLETIME &lt;key&gt; 返回给定 key 自储存以来的空闲时间(idle， 没有被读取也没有被写入)，以秒为单位。</li>
+                        </ul>
+                    </div>
+                    <div class="line">
+                                    对象可以以多种方式编码：
+                    </div>
+                    <div class="line">
+                        <ul>
+                            <li>字符串可以被编码为 raw (一般字符串)或 int (为了节约内存，Redis 会将字符串表示的 64 位有符号整数编码为整数来进行储存）。</li>
+                            <li>列表可以被编码为 ziplist 或 linkedlist 。 ziplist 是为节约大小较小的列表空间而作的特殊表示。</li>
+                            <li>集合可以被编码为 intset 或者 hashtable 。 intset 是只储存数字的小集合的特殊表示。</li>
+                            <li>哈希表可以编码为 zipmap 或者 hashtable 。 zipmap 是小哈希表的特殊表示。</li>
+                            <li>有序集合可以被编码为 ziplist 或者 skiplist 格式。 ziplist 用于表示小的有序集合，而 skiplist 则用于表示任何大小的有序集合。</li>
+                        </ul>
+
+                    </div>
+                    <div class="line">
+                        假如你做了什么让 Redis 没办法再使用节省空间的编码时(比如将一个只有 1 个元素的集合扩展为一个有 100 万个元素的集合)，特殊编码类型(specially encoded types)会自动转换成通用类型(general type)。
+
+                    </div>
+
+                    <div class="title">可用版本：</div>
+                    <div class="line">>= 2.2.3</div>
+                    <div class="title">时间复杂度：</div>
+                    <div class="line">O(1)</div>
+                    <div class="title">返回值：</div>
+                    <div class="line">
+                        REFCOUNT 和 IDLETIME 返回数字。
+                        ENCODING 返回相应的编码类型。
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    英文说明
+                </div>
+                <div class="panel-footer">
+
+
+                    <div class="line">
+                        Available since 2.2.3.
+                    </div>
+                    <div class="line">
+                        The OBJECT command allows to inspect the internals of Redis Objects associated with keys. It is useful for debugging or to understand if your keys are using the specially encoded data types to save space. Your application may also use the information reported by the OBJECT command to implement application level key eviction policies when using Redis as a Cache.
+                    </div>
+                    <div class="line">
+                        The OBJECT command supports multiple sub commands:
+                    </div>
+                    <div class="line">
+                        <ul>
+                            <li>OBJECT REFCOUNT &lt;key&gt; returns the number of references of the value associated with the specified key. This command is mainly useful for debugging.</li>
+                            <li>OBJECT ENCODING &lt;key&gt; returns the kind of internal representation used in order to store the value associated with a key.</li>
+                            <li>OBJECT IDLETIME &lt;key&gt; returns the number of seconds since the object stored at the specified key is idle (not requested by read or write operations). While the value is returned in seconds the actual resolution of this timer is 10 seconds, but may vary in future implementations.</li>
+                        </ul>
+                    </div>
+                    <div class="line">
+                                Objects can be encoded in different ways:
+                    </div>
+                    <div class="line">
+                        <ul>
+                            <li>Strings can be encoded as raw (normal string encoding) or int (strings representing integers in a 64 bit signed interval are encoded in this way in order to save space).</li>
+                            <li>Lists can be encoded as ziplist or linkedlist. The ziplist is the special representation that is used to save space for small lists.</li>
+                            <li>Sets can be encoded as intset or hashtable. The intset is a special encoding used for small sets composed solely of integers.</li>
+                            <li>Hashes can be encoded as ziplist or hashtable. The ziplist is a special encoding used for small hashes.</li>
+                            <li>Sorted Sets can be encoded as ziplist or skiplist format. As for the List type small sorted sets can be specially encoded using ziplist, while the skiplist encoding is the one that works with sorted sets of any size.</li>
+                        </ul>
+
+                    </div>
+                    <div class="line">
+                        All the specially encoded types are automatically converted to the general type once you perform an operation that makes it impossible for Redis to retain the space saving encoding.
+                    </div>
+                    <div class="title">Time complexity:</div>
+                    <div class="line">
+                        O(1) for all the currently implemented subcommands.
+                    </div>
+                    <div class="title">Return value</div>
+                    <div class="line">
+                        Different return values are used for different subcommands.
+                        <ul>
+                            <li>Subcommands refcount and idletime return integers.</li>
+                            <li>Subcommand encoding returns a bulk reply.</li>
+                        </ul>
+                        If the object you try to inspect is missing, a null bulk reply is returned.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            示例
+        </div>
+        <div class="panel-footer">
+
+            <span class="shell">redis></span> <span class="cli">SET hello world</span>
+            <div class="response">OK</div>
+
+            <div class="comment"># 查看引用</div>
+            <span class="shell">redis></span> <span class="cli">OBJECT REFCOUNT hello</span>
+            <div class="response">(integer) 1</div>
+
+            <div class="comment"># 查看空闲时间</div>
+            <span class="shell">redis></span><span class="cli">OBJECT IDLETIME hello</span>
+            <div class="response">(integer) 71</div>
+
+            <span class="shell">redis></span> <span class="cli">GET hello world</span>
+            <div class="response">OK</div>
+            <span class="shell">redis></span> <span class="cli">OBJECT REFCOUNT hello</span>
+            <div class="response">(integer) 1</div>
+            <span class="shell">redis></span><span class="cli">OBJECT IDLETIME hello</span>
+            <div class="response">(integer) 21</div>
+
+            <div class="comment"># 查看类型</div>
+            <span class="shell">redis></span><span class="cli">OBJECT ENCODING hello</span>
+            <div class="response">"embstr"</div>
+
+            <div class="comment"># 特别大的数值会被编码成字符串</div>
+            <span class="shell">redis></span><span class="cli">SET hello 100000000000000000000000000000000000000000000000000000000</span>
+            <div class="response">OK</div>
+            <span class="shell">redis></span><span class="cli">OBJECT ENCODING hello</span>
+            <div class="response">"raw"</div>
+
+            <span class="shell">redis></span><span class="cli">SET hello 10</span>
+            <div class="response">OK</div>
+            <span class="shell">redis></span><span class="cli">OBJECT ENCODING hello</span>
+            <div class="response">"int"</div>
+
+
+        </div>
+    </div>
+</div>
