@@ -1,0 +1,86 @@
+<div class="col-md-9">
+    <div class="row command">PERSIST</div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    中文说明
+                </div>
+                <div class="panel-footer">
+
+                    <div class="title">PERSIST key</div>
+
+                    <div class="line">移除给定 key 的生存时间，将这个 key 从『易失的』(带生存时间 key )转换成『持久的』(一个不带生存时间、永不过期的 key )。</div>
+
+
+                    <div class="title">可用版本：</div>
+                    <div class="line">>= 2.2.0</div>
+                    <div class="title">时间复杂度：</div>
+                    <div class="line">O(1)</div>
+                    <div class="title">返回值：</div>
+                    <div class="line">
+                        当生存时间移除成功时，返回 1 。
+                        如果 key 不存在或 key 没有设置生存时间，返回 0 。
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    英文说明
+                </div>
+                <div class="panel-footer">
+
+
+                    <div class="line">
+                        Available since 2.2.0.
+                    </div>
+                    <div class="line">
+                        Remove the existing timeout on key, turning the key from volatile (a key with an expire set) to persistent (a key that will never expire as no timeout is associated).
+                    </div>
+
+                    <div class="title">Time complexity:</div>
+                    <div class="line">
+                        O(1)
+                    </div>
+                    <div class="title">Return value</div>
+                    <div class="line">
+                        Integer reply, specifically:
+                        <ul>
+                            <li>1 if the timeout was removed.</li>
+                            <li>0 if key does not exist or does not have an associated timeout.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            示例
+        </div>
+        <div class="panel-footer">
+
+            <span class="shell">redis></span> <span class="cli">SET hello world</span>
+            <div class="response">OK</div>
+
+            <div class="comment"># 设置生存时间</div>
+            <span class="shell">redis></span> <span class="cli">EXPIRE hello 100</span>
+            <div class="response">(integer) 1</div>
+
+            <div class="comment"># 查看生存时间</div>
+            <span class="shell">redis></span><span class="cli">TTL hello</span>
+            <div class="response">(integer) 33</div>
+
+            <div class="comment"># 移除生存时间</div>
+            <span class="shell">redis></span> <span class="cli">PERSIST hello</span>
+            <div class="response">(integer) 1</div>
+            <span class="shell">redis></span> <span class="cli">TTL hello</span>
+            <div class="response">(integer) -1</div>
+
+        </div>
+    </div>
+</div>
